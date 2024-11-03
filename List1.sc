@@ -4,7 +4,7 @@ import scala.annotation.tailrec
 
 def flatten1[A](xss: List[List[A]]): List[A] = {
   if (xss.isEmpty) throw new RuntimeException(s"Podana lista jest pusta: $xss.")
-  if (xss.tail.isEmpty) xss.head
+  else if (xss.tail.isEmpty) xss.head
   else xss.head ::: flatten1(xss.tail)
 }
 
