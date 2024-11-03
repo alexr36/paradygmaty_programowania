@@ -54,7 +54,7 @@ sqrListMet(List(6, 4, 9, 15))
 sqrListMet(List())
 
 //  Jako funkcja anonimowa
-val sqrList: (List[Int] => List[Int]) = xs => {
+def sqrList: (List[Int] => List[Int]) = xs => {
   if (xs.isEmpty) Nil
   else xs.head * xs.head :: sqrList(xs.tail)
 }
