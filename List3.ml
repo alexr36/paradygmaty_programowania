@@ -115,7 +115,7 @@ let rec divide list =
   | [] -> ([], [])
   | [x] -> ([x], [])
   | listHead1 :: listHead2 :: listTail ->
-      let leftList, rightList = divide listTail in
+      let (leftList, rightList) = divide listTail in
       (listHead1 :: leftList, listHead2 :: rightList)
 
 let rec mergesort compFunc list =
