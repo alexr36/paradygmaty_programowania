@@ -103,27 +103,27 @@ insertionsort compare [6; 7; 21; 1; 8; 24; 51; 2; 2];;
 (* Funkcja pomocnicza do scalania list *)
 let rec merge compFunc listA listB =
   match listA, listB with
-  | [], _ -> listB
-  | _, [] -> listA
-  | listHeadA :: listTailA, listHeadB :: listTailB ->
+  | ([], _) -> listB
+  | (_, []) -> listA
+  | (listHeadA :: listTailA, listHeadB :: listTailB) ->
       if (compFunc listHeadA listHeadB) then listHeadA :: merge compFunc listTailA listB
       else listHeadB :: merge compFunc listTailB listA  
 
 (* Funkcja pomocnicza do dzielenia list *)  
 let rec divide list =
   match list with
-  | [] -> [], []
-  | [x] -> [x], []
+  | [] -> ([], [])
+  | [x] -> ([x], [])
   | listHead1 :: listHead2 :: listTail ->
       let leftList, rightList = divide listTail in
-      listHead1 :: leftList, listHead2 :: rightList
+      (listHead1 :: leftList, listHead2 :: rightList)
 
 let rec mergesort compFunc list =
   match list with
   | [] -> []
   | [_] -> list
   | _ ->
-      let leftList, rightList = divide list in
+      let (leftList, rightList) = divide list in
       merge compFunc (mergesort compFunc leftList) (mergesort compFunc rightList)
 
 (* 
