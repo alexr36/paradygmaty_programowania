@@ -6,7 +6,7 @@
 
 *)
 
-(* ZADANIE 1 *)
+(*  --  ZADANIE 1   ------------------------------------------------------------------  *)
 
 (* 
 
@@ -25,7 +25,7 @@ b) let f2 x y z = x (y ^ z)
 
 *)
 
-(* ZADANIE 2 *)
+(*  --  ZADANIE 2   ------------------------------------------------------------------  *)
 
 (* a) *)
 
@@ -39,7 +39,7 @@ let curry3BezLuk = fun f -> fun (x, y, z) -> f x y z
 
   Nie jest określone jaki typ muszą przyjmowac ani zwracac funkcje, a zatem:
   f: ('a -> 'b -> 'c ->) 'd
-  curry3Luk: ('a -> 'b -> 'c -> 'd) -> ('a * 'b * 'c) -> 'd
+  curry3Luk: ('a -> 'b -> 'c -> 'd) -> ('a * 'b * 'c) - > 'd
 
 *)
 
@@ -59,12 +59,12 @@ let uncurry3BezLuk = fun f -> fun x -> fun y -> fun z -> f (x, y, z)
 
 *)
 
-(* ZADANIE 3 *)
+(*  --  ZADANIE 3   ------------------------------------------------------------------  *)
 
 let sumProd xs =
   List.fold_left (fun (sum, product) x -> (sum + x, product * x)) (0, 1) xs
 
-(* ZADANIE 4 *)
+(*  --  ZADANIE 4   ------------------------------------------------------------------  *)
 
 (*
 
@@ -77,7 +77,7 @@ co powoduje brak porównania y == x, czyli niespełnienie warunku stabilności.
 
 *)
 
-(* ZADANIE 5 *)
+(*  --  ZADANIE 5   ------------------------------------------------------------------  *)
 
 (* Funkcja do porownywania *)
 let compare x y = x <= y
