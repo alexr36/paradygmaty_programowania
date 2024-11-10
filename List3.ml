@@ -39,7 +39,7 @@ let curry3BezLuk = fun f -> fun (x, y, z) -> f x y z
 
   Nie jest określone jaki typ muszą przyjmowac ani zwracac funkcje, a zatem:
   f: ('a -> 'b -> 'c ->) 'd
-  curry3Luk: ('a -> 'b -> 'c -> 'd) -> ('a * 'b * 'c) - > 'd
+  curry3Luk: ('a -> 'b -> 'c -> 'd) -> ('a * 'b * 'c) -> 'd
 
 *)
 
