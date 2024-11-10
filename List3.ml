@@ -86,8 +86,9 @@ let compare x y = x <= y
 let rec insert compFunc x list =
   match list with
   | [] -> [x]
-  | listHead :: listTail -> if (compFunc x listHead) then x :: list
-                            else  listHead :: insert compFunc x listTail 
+  | listHead :: listTail ->
+      if (compFunc x listHead) then x :: list
+      else  listHead :: insert compFunc x listTail 
 
 let rec insertionsort compFunc list =
   match list with
