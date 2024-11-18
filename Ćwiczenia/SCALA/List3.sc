@@ -4,29 +4,29 @@
 
 //  a)
 
-def curry3[A, B, C, D](f: A => B => C => D): (A, B, C) => D = {
-  case (x, y, z) => f(x)(y)(z)
-}
-
-/*
-
-  Nie jest określone jaki typ mają przujmować funkcje, a zatem:
-  f:  A => B => C => D
-  curry3: (A => B => C => D) => (A, B, C) => D
-
- */
-
-//  b)
-
-def uncurry3[A, B, C, D](f: (A, B, C) => D): A => B => C => D = {
+def curry3[A, B, C, D](f: (A, B, C) => D): A => B => C => D = {
   case (x: A) => (y: B) => (z: C) => f(x, y, z)
 }
 
 /*
 
   Nie jest określone jaki typ mają przujmować funkcje, a zatem:
-  f:  (A, B, C) => D
+  f: (A, B, C) => D
   curry3: ((A, B, C) => D) => A => B => C => D
+
+ */
+
+//  b)
+
+def uncurry3[A, B, C, D](f: A => B => C => D): (A, B, C) => D = {
+  case (x, y, z) => f(x)(y)(z)
+}
+
+/*
+
+  Nie jest określone jaki typ mają przujmować funkcje, a zatem:
+  f: A => B => C => D  
+  uncurry3: (A => B => C => D) => (A, B, C) => D
 
  */
 
