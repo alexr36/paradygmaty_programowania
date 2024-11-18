@@ -56,13 +56,13 @@ root3 8.;;
 
 let matchCaseOne list =
   match list with
-  | [_; _; x; _; _] when x = 0 -> "Dopasowano wzorzec z x = 0."
+  | [_; _; x; _; _] when (x = 0) -> "Dopasowano wzorzec z x = 0."
   | _ -> "Nie dopasowano wzorca."
 
 
 let matchCaseTwo list =
   match list with
-  | [(_, _); (x, _)] when x = 0 -> "Dopasowano wzorzec z x = 0."
+  | [(_, _); (x, _)] when (x = 0) -> "Dopasowano wzorzec z x = 0."
   | _ -> "Nie dopasowano wzorca."
 
 
