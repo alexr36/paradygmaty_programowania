@@ -31,7 +31,7 @@ count("Default", List("Aa", "Bb", "Cc"))
 
 def replicate[A](x: A, n: Int): List[A] = {
   if (n < 0) throw new RuntimeException("Element nie moze byc powtorzony ujemna ilosc razy.")
-  else if (n = 0) Nil
+  else if (n == 0) Nil
   else x :: replicate(x, n - 1)
 }
 
