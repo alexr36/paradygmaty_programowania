@@ -2,10 +2,10 @@
 
 (*  --  ZADANIE 1 ------------------------------------------------------------------------------------------------------------ *)
 
-let rec flatten1 xss = 
-  if (xss = []) then raise (Failure "Podana lista jest pusta.")
-  else if (List.tl xss = []) then List.hd xss
-  else (List.hd xss) @ flatten1 (List.tl xss)
+let rec flatten1 xss =                                                                                                         
+  if (xss = []) then raise (Failure "Podana lista jest pusta.")                                                                  (* Jeśli lista list jest pusta, rzuć wyjątek *)
+  else if (List.tl xss = []) then List.hd xss                                                                                    (* Jeśli ogon listy list jest pusty, zwróć głowę tej listy *) 
+  else (List.hd xss) @ flatten1 (List.tl xss)                                                                                    (* Jeśli ogon listy nie jest pusty, dodaj listę będącą głową listy list do listy wynikowej wywołania funkcji dla ogona listy list *)
 
 (* TESTY
 
@@ -18,9 +18,9 @@ flatten1 [];;
 (*  --  ZADANIE 2 ------------------------------------------------------------------------------------------------------------ *)
 
 let rec count (x, xs) =
-  if (xs = []) then 0
-  else if (List.hd xs = x) then 1 + count (x, (List.tl xs))
-  else count (x, (List.tl xs))
+  if (xs = []) then 0                                                                                                            (* Jeśli lista jest pusta, to zwróć 0 *)
+  else if (List.hd xs = x) then 1 + count (x, (List.tl xs))                                                                      (* Jeśli głowa listy jest równa wartości, której liczbę powtórzeń liczymy, dodaj 1 do wywołania funkcji dla ogona listy *)
+  else count (x, (List.tl xs))                                                                                                   (* Jeśli głowa listy nie jest równa tej wartości, wowołaj funkcję dla ogona listy *)
 
 
 (* TESTY
@@ -34,9 +34,9 @@ count (1, []);;
 (*  --  ZADANIE 1 ------------------------------------------------------------------------------------------------------------ *)
 
 let rec replicate (x, n) =
-  if (n < 0) then raise (Failure "Element nie moze byc powtorzony ujemna ilosc razy.")
-  else if (n = 0) then []
-  else x :: replicate (x, n - 1)
+  if (n < 0) then raise (Failure "Element nie moze byc powtorzony ujemna ilosc razy.")                                           (* Jeśli n jest mniejsze od 0, rzuć wyjątek *)
+  else if (n = 0) then []                                                                                                        (* Jeśli n jest równe 0, to zwróć listę pustą *)
+  else x :: replicate (x, n - 1)                                                                                                 (* Jeśli n jest większe od 0, dodaj powtarzany element do wyniku wywołania funkcji dla (n - 1) *)
   
 (*  TESTY
 
@@ -50,12 +50,12 @@ replicate(1000, -4);;
 (*  --  ZADANIE 4 ------------------------------------------------------------------------------------------------------------ *)
 
 (* Jako metoda *)
-let rec sqrListMet xs =
-  if (xs = []) then []
-  else (List.hd xs * List.hd xs) :: sqrListMet (List.tl xs) 
+let rec sqrListMet xs =  
+  if (xs = []) then []                                                                                                           (* Jeśli lista jest pusta, zwróć listę pustą *)
+  else (List.hd xs * List.hd xs) :: sqrListMet (List.tl xs)                                                                      (* W przeciwnym wypadku, dodaj kwadrat głowy listy do listy wynikowej wywołania funkcji dla ogona listy *)
 
 (* Jako funkcja *)  
-let sqrListFun = fun xs ->
+let sqrListFun = fun xs ->                                                                                                       (* Analogicznie jak wyżej, ale z funkcją pomocniczą wewnątrz *)
   let rec helper xs =
     if (xs = []) then []
     else (List.hd xs * List.hd xs) :: helper (List.tl xs) in
@@ -75,52 +75,10 @@ sqrListFun [];;
 
 (*  --  ZADANIE 5 ------------------------------------------------------------------------------------------------------------ *)
 
-(* Osobiście zdefiniowana funkcja reverseList *)
-let rec reverseList xs =
-  if (xs = []) then []
-  else reverseList (List.tl xs) @ [List.hd xs] 
-  
-(* Z osobiście zdefiniowaną funkcją reverseList *)  
-let rec palindromeCustomRev xs =
-  if (xs = [] || List.tl xs = []) then true
-  else if (List.hd xs = List.hd (reverseList xs)) then palindromeCustomRev (List.tl (reverseList (List.tl xs)))
-  else false  
-
-(* Z wbudowaną funkcją List.rev *)
-let palindromeBuiltInRev xs =
-  if (xs = [] || List.tl xs = []) then true
-  else xs = List.rev xs  
-
-(* Oryginalny pomysł *)  
-let rec palindrome xs =
-  if (xs = [] || List.tl xs = []) then true
-  else if (List.hd xs = List.hd (List.rev xs)) then palindrome (List.tl (List.rev (List.tl xs)))
-  else false  
-
 let palindromeExperimental xs =
-  xs = List.rev xs  
+  xs = List.rev xs                                                                                                               (* Sprawdzenie, czy odwrócona lista jest równa samej sobie *)
 
 (*  TESTY
-
-reverseList [1; 2; 3; 4; 5];;
-
-palindrome ['a'; 'l'; 'a'];;
-palindrome [1; 2; 3; 4; 5];;
-palindrome ["Jestem"; "Palindromem"; "Jestem"];;
-palindrome [585];;
-palindrome [];;
-
-palindromeCustomRev ['a'; 'l'; 'a'];;
-palindromeCustomRev [1; 2; 3; 4; 5];;
-palindromeCustomRev ["Jestem"; "Palindromem"; "Jestem"];;
-palindromeCustomRev [585];;
-palindromeCustomRev [];;
-
-palindromeBuiltInRev ['a'; 'l'; 'a'];;
-palindromeBuiltInRev [1; 2; 3; 4; 5];;
-palindromeBuiltInRev ["Jestem"; "Palindromem"; "Jestem"];;
-palindromeBuiltInRev [585];;
-palindromeBuiltInRev [];;
 
 palindromeExperimental ['a'; 'l'; 'a'];;
 palindromeExperimental [1; 2; 3; 4; 5];;
@@ -133,8 +91,8 @@ palindromeExperimental [];;
 (*  --  ZADANIE 6 ------------------------------------------------------------------------------------------------------------ *)
 
 let rec listLength xs =
-  if (xs = []) then 0
-  else 1 + listLength (List.tl xs)
+  if (xs = []) then 0                                                                                                            (* Jeśli lista jest pusta, zwróć 0 *)
+  else 1 + listLength (List.tl xs)                                                                                               (* W przeciwnym wypadku, dodaj 1 do wyniku wywołania funkcji dla ogona listy *)
 
 (*  TESTY --  #use "/Users/alexrogozinski/visualStudioCode/OCAML/Cw1/Cw1_6.ml";;
 
