@@ -8,7 +8,7 @@ let rec fib n =
   | n when (n < 0) -> raise (Failure "Nie mozna obliczyc wyrazu ciagu o pozycji mniejszej niz zero.")
   | 0 -> 0
   | 1 -> 1
-  | n -> fib (n -1) + fib (n - 2)
+  | n -> fib (n - 1) + fib (n - 2)
 
 
 (* Wersja z rekurencją ogonową *)
