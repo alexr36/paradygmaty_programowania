@@ -82,6 +82,7 @@ co powoduje brak porównania y == x, czyli niespełnienie warunku stabilności.
 (* Funkcja do porownywania *)
 let compare x y = x <= y
 
+
 (* Funkcja pomocnicza do wstawiania elementu na odpowiednie miejsce *)
 let rec insert compFunc x list =
   match list with                                                                                                   (* Dopasowanie listy do wzorca *)
@@ -89,6 +90,7 @@ let rec insert compFunc x list =
   | listHead :: listTail ->                                                                                         (* Jeśli lista nie jest pusta, weź jej głowę *)
       if (compFunc x listHead) then x :: list                                                                       (* Jeśli wstawiany element jest mniejszy lub równy głowie listy, dodaj element do listy *)
       else listHead :: insert compFunc x listTail                                                                   (* W przeciwnym wypadku dodaj głowę listy do listy wynikowej wywołania funkcji dla wstawianego elementu i ogona pierwotnej listy *)
+
 
 let rec insertionsort compFunc list =
   match list with                                                                                                   (* Dopasowanie listy do wzorca *)
@@ -103,29 +105,31 @@ insertionsort compare [6; 7; 21; 1; 8; 24; 51; 2; 2];;
 
 (* Funkcja pomocnicza do scalania list *)
 let rec merge compFunc listA listB =
-  match listA, listB with
-  | ([], _) -> listB
-  | (_, []) -> listA
-  | (listHeadA :: listTailA, listHeadB :: listTailB) ->
-      if (compFunc listHeadA listHeadB) then listHeadA :: merge compFunc listTailA listB
-      else listHeadB :: merge compFunc listTailB listA  
+  match (listA, listB) with                                                                                         (* Dopasowanie pary list do wzorca *)
+  | ([], _) -> listB                                                                                                (* Jeśli lewa lista jest pusta, zwróć prawą *)
+  | (_, []) -> listA                                                                                                (* Jeśli prawa lista jest pusta, zwróć lewą *)
+  | (listHeadA :: listTailA, listHeadB :: listTailB) ->                                                             (* Jeśli listy nie są puste, weź ich głowy *)
+      if (compFunc listHeadA listHeadB) then listHeadA :: merge compFunc listTailA listB                            (* Jeśli głowa listy pierwszej jest <= głowie listy drugiej, dodaj głowę listy pierwszej do listy wynikowej wywołania funkcji dla ogona listy pierwszej i pierwotnej listy drugiej *)
+      else listHeadB :: merge compFunc listTailB listA                                                              (* W przeciwnym wypadku, odwrotnie *)
+
 
 (* Funkcja pomocnicza do dzielenia list *)  
 let rec divide list =
-  match list with
-  | [] -> ([], [])
-  | [x] -> ([x], [])
-  | listHead1 :: listHead2 :: listTail ->
-      let (leftList, rightList) = divide listTail in
-      (listHead1 :: leftList, listHead2 :: rightList)
+  match list with                                                                                                   (* Dopasowanie listy do wzorca *)
+  | [] -> ([], [])                                                                                                  (* Jeśli lista jest pusta, zwróć parę list pustych *)
+  | [x] -> ([x], [])                                                                                                (* Jeśli lista jest jednoelementowa, niech będzie pierwszą listą w parze *)
+  | listHead1 :: listHead2 :: listTail ->                                                                           (* Jeśli lista nie jest pusta, weź dwa jej pierwsze elementy *)
+      let (leftList, rightList) = divide listTail in                                                                (* Niech para list (leftList, rightList) będzie wynikiem podziału listy z wywołania funkcji dla ogona pierwotnej listy *)
+      (listHead1 :: leftList, listHead2 :: rightList)                                                               (* Dodaj pierwszy element do leftList i drugi do rightList *)
 
-let rec mergesort compFunc list =
-  match list with
-  | [] -> []
-  | [_] -> list
-  | _ ->
-      let (leftList, rightList) = divide list in
-      merge compFunc (mergesort compFunc leftList) (mergesort compFunc rightList)
+
+let rec mergesort compFunc list 
+  match list with                                                                                                   (* Dopasowanie listy do wzorca *)
+  | [] -> []                                                                                                        (* Jeśli lista jest pusta, zwróć listę pustą *)
+  | [_] -> list                                                                                                     (* Jeśli lista jest jednoelementowa, zwróć tę listę *)
+  | _ ->                                                                                                            (* Jeśli lista ma więcej niż 1 element: *)
+      let (leftList, rightList) = divide list in                                                                    (* - Niech para list (leftList, rightList) będzie wynikiem podziału listy z wywołania funkcji dzielenia list *)
+      merge compFunc (mergesort compFunc leftList) (mergesort compFunc rightList)                                   (* - Wywołanie funkcji łączenia list dla list wynikowych wywołań funkcji sortowania dla leftList i rightList *)
 
 (* 
 
