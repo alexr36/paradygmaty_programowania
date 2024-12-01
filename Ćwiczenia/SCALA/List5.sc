@@ -2,6 +2,8 @@
 
 //  --  ZADANIE 1 ------------------------------------------------------------------------------------------------------
 
+//  Złożoność: O(n * k); n - liczba elementów w liście, k - liczba powtórzeń elementu
+
 def lrepeat[A](k: Int)(lxs: LazyList[A]): LazyList[A] = {
   if (k <= 0) throw new RuntimeException(s"Cannot repeat an element less than 0 times: $k.")
   else {
@@ -24,6 +26,8 @@ lrepeat(3)(LazyList()).take(15).toList
 
 //  --  ZADANIE 2 ------------------------------------------------------------------------------------------------------
 
+//  Złożoność: O(n)
+
 val lfib: LazyList[Int] = {
   def fib(a: Int, b: Int): LazyList[Int] = {
     a #:: fib(b, a + b)
@@ -43,6 +47,9 @@ case object LEmpty extends lBT[Nothing]
 case class LNode[+A](elem: A, left: () => lBT[A], right: () => lBT[A]) extends lBT[A]
 
 //  Podpunkt a):
+
+//  Złożoność: O(n^2)
+
 def lBreadth[A](ltree: lBT[A]): LazyList[A] = {
   def aux(queue: List[lBT[A]]): LazyList[A] = queue match {
     case Nil => LazyList().empty
@@ -55,6 +62,9 @@ def lBreadth[A](ltree: lBT[A]): LazyList[A] = {
 }
 
 //  Podpunkt b):
+
+//  Złożoność: O(n)
+
 def lTree(n: Int): lBT[Int] = {
   LNode(n, () => lTree(2 * n), () => lTree(2 * n + 1))
 }
