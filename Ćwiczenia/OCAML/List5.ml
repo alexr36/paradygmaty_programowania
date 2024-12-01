@@ -22,6 +22,8 @@ let rec ltake n lxs =
 
 (*  --  ZADANIE 1 -------------------------------------------------------------------------------- *)
 
+(* Złożoność: O(n * k); n - liczba elementów w liście, k - liczba powtórzeń elementu *)
+
 let rec lrepeat k lxs =
   if (k <= 0) then failwith("Nie mozna powtorzyc elementu mniej niz jeden raz.")                      (* Jesli liczba powtorzen jest mniejsza lub rowna zero to rzuc wyjatek *)
   else                                                                                                (* W przeciwnym wypadku przejdz do wykonania reszty funkcji *)
@@ -39,6 +41,8 @@ ltake 15 (lrepeat 3 (lfrom 1))
 
 (*  --  ZADANIE 2 -------------------------------------------------------------------------------- *)
 
+(* Złożoność: O(n) *)
+
 let rec lfib =
   let rec fib a b = LCons (a, lazy (fib b (a + b)))
   in fib 1 1;;
@@ -52,6 +56,9 @@ ltake 15 lfib
 type 'a lBT = LEmpty | LNode of 'a * (unit -> 'a lBT) * (unit -> 'a lBT)
 
 (* Podpunkt a): *)
+
+(* Złożoność: O(n^2) *)
+
 let rec lBreadth ltree =
   let rec helperFunc queue =
     match queue with
@@ -62,6 +69,9 @@ let rec lBreadth ltree =
     in helperFunc [ltree];;    
 
 (* Podpunkt b): *)
+
+(* Złożoność: O(n) *)
+
 let rec lTree n = LNode (n, (fun () -> lTree (2 * n)), (fun () -> lTree (2 * n + 1)));;
 
 
