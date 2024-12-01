@@ -84,16 +84,16 @@ let compare x y = x <= y
 
 (* Funkcja pomocnicza do wstawiania elementu na odpowiednie miejsce *)
 let rec insert compFunc x list =
-  match list with
-  | [] -> [x]
-  | listHead :: listTail ->
-      if (compFunc x listHead) then x :: list
-      else listHead :: insert compFunc x listTail 
+  match list with                                                                                                   (* Dopasowanie listy do wzorca *)
+  | [] -> [x]                                                                                                       (* Jeśli lista jest pusta, zwróć jednoelementową listę zawierającą wstawiany element *)
+  | listHead :: listTail ->                                                                                         (* Jeśli lista nie jest pusta, weź jej głowę *)
+      if (compFunc x listHead) then x :: list                                                                       (* Jeśli wstawiany element jest mniejszy lub równy głowie listy, dodaj element do listy *)
+      else listHead :: insert compFunc x listTail                                                                   (* W przeciwnym wypadku dodaj głowę listy do listy wynikowej wywołania funkcji dla wstawianego elementu i ogona pierwotnej listy *)
 
 let rec insertionsort compFunc list =
-  match list with
-  | [] -> []
-  | listHead :: listTail -> insert compFunc listHead (insertionsort compFunc listTail)
+  match list with                                                                                                   (* Dopasowanie listy do wzorca *)
+  | [] -> []                                                                                                        (* Jeśli lista jest pusta, zwróć listę pustą *)
+  | listHead :: listTail -> insert compFunc listHead (insertionsort compFunc listTail)                              (* Jeśli lista nie jest pusta, weź jej głowę i umieść na odpowiednim miejscu w liście otrzymanej z wywołania funkcji dla ogona pierwotnej listy *)
 
 (* 
 
