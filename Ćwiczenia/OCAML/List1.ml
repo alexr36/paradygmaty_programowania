@@ -75,16 +75,16 @@ sqrListFun [];;
 
 (*  --  ZADANIE 5 ------------------------------------------------------------------------------------------------------------ *)
 
-let palindromeExperimental xs =
+let palindrome xs =
   xs = List.rev xs                                                                                                               (* Sprawdzenie, czy odwrócona lista jest równa samej sobie *)
 
 (*  TESTY
 
-palindromeExperimental ['a'; 'l'; 'a'];;
-palindromeExperimental [1; 2; 3; 4; 5];;
-palindromeExperimental ["Jestem"; "Palindromem"; "Jestem"];;
-palindromeExperimental [585];;
-palindromeExperimental [];;
+palindrome ['a'; 'l'; 'a'];;
+palindrome [1; 2; 3; 4; 5];;
+palindrome ["Jestem"; "Palindromem"; "Jestem"];;
+palindrome [585];;
+palindrome [];;
 
 *)  
 
