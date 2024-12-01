@@ -31,18 +31,18 @@ fibTail 42;;      - zlozonosc obliczeniowa: O(n)
 (* -- ZADANIE 3   ---------------------------------------------------------------------------------------------------------- *)
 
 let rec root3 a =
-  let epsilon = 1e-15 in
-  let rec helperFunc x =
-    if (abs_float (x ** 3. -. a) <= epsilon *. abs_float a) then x
-    else 
-      let x_next = x +. (a /. (x ** 2.) -. x) /. 3. in
-      helperFunc x_next
+  let epsilon = 1e-15 in                                                                                                         (* Deklaracja i definicja stałej epsilon (dokładności) *)
+  let rec helperFunc x =                                                                                                         (* Funkcja pomocnicza *)
+    if (abs_float (x ** 3. -. a) <= epsilon *. abs_float a) then x                                                               (* Jeśli wartość |x^3 - a| jest mniejsza lub równa wartości epsilon * |a|, to zwróć x *)
+    else                                                                                                                         (* W przeciwnym wypadku: *)
+      let x_next = x +. (a /. (x ** 2.) -. x) /. 3. in                                                                           (* Niech x_next będzie następną wartością x, obliczoną na podstawie wzoru: x + (a / x^2 - x) / 3 *)
+      helperFunc x_next                                                                                                          (* Wywołanie funkcji pomocniczej dla x_next *)
   in
-  let x0 = 
-    if (a > 1.) then a /. 3. 
-    else a
+  let x0 =                                                                                                                       (* Deklaracja wartości początkowej dla x *)
+    if (a > 1.) then a /. 3.                                                                                                     (* Jeśli a > 1, to x = a / 3 *)
+    else a                                                                                                                       (* W przeciwynym wypadku, x = a *)
   in
-  helperFunc x0  
+  helperFunc x0                                                                                                                  (* Wywołanie funkcji pomocniczej dla wartości początkowej x *)
 
 
 (* TESTY 
