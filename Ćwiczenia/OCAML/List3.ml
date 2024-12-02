@@ -68,12 +68,12 @@ let sumProd xs =
 
 (*
 
-Pierwsza wersja nie działa poprawnie, ponieważ funkcja List.filter w obu przypadkach używa List.hd xs 
-jako pivota, co oznacza, że pivot jest ponownie używany po filtrowaniu, 
-co prowadzi do problemów z wydajnością i poprawnością (mogą pojawić się elementy zduplikowane lub pominięte).
-Druga wersja działa lepiej, ponieważ używa x::xs do przypisania pivotowi zmiennej x, 
-ale nadal istnieje problem, ponieważ używa fun y -> y > x, 
-co powoduje brak porównania y == x, czyli niespełnienie warunku stabilności.
+  Pierwsza wersja nie działa poprawnie, ponieważ funkcja List.filter w obu przypadkach używa List.hd xs 
+  jako pivota, co oznacza, że pivot jest ponownie używany po filtrowaniu, 
+  co prowadzi do problemów z wydajnością i poprawnością (mogą pojawić się elementy zduplikowane lub pominięte).
+  Druga wersja działa lepiej, ponieważ używa x::xs do przypisania pivotowi zmiennej x, 
+  ale nadal istnieje problem, ponieważ używa fun y -> y > x, 
+  co powoduje brak porównania y == x, czyli niespełnienie warunku stabilności.
 
 *)
 
