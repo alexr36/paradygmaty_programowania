@@ -40,12 +40,12 @@ def sumProd(xs: List[Int]): (Int, Int) = {
 //  --  ZADANIE 5 ------------------------------------------------------------------------------------------------------
 
 //  Funkcja do porównywania
-def compare(x: Int, y: Int): Boolean = x <= y
+def compare(x: Int)(y: Int): Boolean = x <= y
 
 //  a)
 
 //  Funkcja pomocnicza do wstawiania elementów na odpowiednie miejsce
-def insert(compFunc: (Int, Int) => Boolean, x: Int, list: List[Int]): List[Int] = list match {                            //  Dopasowanie listy do wzorca
+def insert(compFunc: Int => Int => Boolean, x: Int, list: List[Int]): List[Int] = list match {                            //  Dopasowanie listy do wzorca
   case Nil => List(x)                                                                                                     //  Jeśli lista jest pusta, zwróć jednoelementową listę zawierającą wstawiany element
   case listHead :: listTail => {                                                                                          //  Jeśli lista nie jest pusta, weź jej głowę
     if compFunc(x, listHead) then x :: list                                                                               //  Jeśli wstawiany element jest mniejszy lub równy głowie listy, dodaj element do listy
@@ -53,7 +53,7 @@ def insert(compFunc: (Int, Int) => Boolean, x: Int, list: List[Int]): List[Int] 
   }
 }
 
-def insertionsort(compFunc: (Int, Int) => Boolean, list: List[Int]): List[Int] = list match {                             //  Dopasowanie listy do wzorca
+def insertionsort(compFunc: Int => Int => Boolean, list: List[Int]): List[Int] = list match {                             //  Dopasowanie listy do wzorca
   case Nil => Nil                                                                                                         //  Jeśli lista jest pusta, zwróć listę pustą
   case listHead :: listTail => insert(compFunc, listHead, insertionsort(compFunc, listTail))                              //  Jeśli lista nie jest pusta, weź jej głowę i umieść na odpowiednim miejscu w liście otrzymanej z wywołania funkcji dla ogona pierwotnej listy
 }
@@ -63,7 +63,7 @@ insertionsort(compare, List(6, 7, 21, 1, 8, 24, 51, 2, 2))
 //  b)
 
 //  Funkcja pomocnicza do scalania list
-def merge(compFunc: (Int, Int) => Boolean, listA: List[Int], listB: List[Int]): List[Int] = (listA, listB) match {        //  Dopasowanie pary list do wzorca
+def merge(compFunc: Int => Int => Boolean, listA: List[Int], listB: List[Int]): List[Int] = (listA, listB) match {        //  Dopasowanie pary list do wzorca
   case (_, Nil) => listA                                                                                                  //  Jeśli prawa lista jest pusta, zwróć lewą
   case (Nil, _) => listB                                                                                                  //  Jeśli lewa lista jest pusta, zwróć prawą
   case (listHeadA :: listTailA, listHeadB :: listTailB) => {                                                              //  Jeśli listy nie są puste, weź ich głowy
@@ -82,7 +82,7 @@ def divide(list: List[Int]): (List[Int], List[Int]) = list match {              
   }
 }
 
-def mergesort(compFunc: (Int, Int) => Boolean, list: List[Int]): List[Int] = list match {                                 //  Dopasowanie listy do wzorca
+def mergesort(compFunc: Int => Int => Boolean, list: List[Int]): List[Int] = list match {                                 //  Dopasowanie listy do wzorca
   case Nil => Nil                                                                                                         //  Jeśli lista jest pusta, zwróć listę pustą
   case List(_) => list                                                                                                    //  Jeśli lista jest jednoelementowa, zwróć tę listę
   case _ => {                                                                                                             //  Jeśli lista ma więcej niż 1 element:
