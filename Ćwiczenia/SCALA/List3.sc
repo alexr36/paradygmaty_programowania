@@ -4,7 +4,7 @@
 
 //  a)
 
-def curry3[A, B, C, D](f: (A, B, C) => D): A => B => C => D = {
+def uncurry3[A, B, C, D](f: (A, B, C) => D): A => B => C => D = {
   case (x: A) => (y: B) => (z: C) => f(x, y, z)
 }
 
@@ -12,13 +12,13 @@ def curry3[A, B, C, D](f: (A, B, C) => D): A => B => C => D = {
 
   Nie jest określone jaki typ mają przujmować funkcje, a zatem:
   f: (A, B, C) => D
-  curry3: ((A, B, C) => D) => A => B => C => D
+  uncurry3: ((A, B, C) => D) => A => B => C => D
 
  */
 
 //  b)
 
-def uncurry3[A, B, C, D](f: A => B => C => D): (A, B, C) => D = {
+def curry3[A, B, C, D](f: A => B => C => D): (A, B, C) => D = {
   case (x, y, z) => f(x)(y)(z)
 }
 
@@ -26,7 +26,7 @@ def uncurry3[A, B, C, D](f: A => B => C => D): (A, B, C) => D = {
 
   Nie jest określone jaki typ mają przujmować funkcje, a zatem:
   f: A => B => C => D  
-  uncurry3: (A => B => C => D) => (A, B, C) => D
+  curry3: (A => B => C => D) => (A, B, C) => D
 
  */
 
@@ -67,7 +67,7 @@ def merge(compFunc: Int => Int => Boolean, listA: List[Int], listB: List[Int]): 
   case (_, Nil) => listA                                                                                                  //  Jeśli prawa lista jest pusta, zwróć lewą
   case (Nil, _) => listB                                                                                                  //  Jeśli lewa lista jest pusta, zwróć prawą
   case (listHeadA :: listTailA, listHeadB :: listTailB) => {                                                              //  Jeśli listy nie są puste, weź ich głowy
-    if compFunc(listHeadA, listHeadB) then listHeadA :: merge(compFunc, listTailA, listB)                                 //  Jeśli głowa listy pierwszej jest <= głowie listy drugiej, dodaj głowę listy pierwszej do listy wynikowej wywołania funkcji dla ogona listy pierwszej i pierwotnej listy drugiej
+    if compFunc(listHeadA)(listHeadB) then listHeadA :: merge(compFunc, listTailA, listB)                                 //  Jeśli głowa listy pierwszej jest <= głowie listy drugiej, dodaj głowę listy pierwszej do listy wynikowej wywołania funkcji dla ogona listy pierwszej i pierwotnej listy drugiej
     else listHeadB :: merge(compFunc, listTailB, listA)                                                                   //  W przeciwnym wypadku, odwrotnie
   }
 }
