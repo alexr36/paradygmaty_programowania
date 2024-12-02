@@ -2,7 +2,7 @@
 
 (* 
 
-#use "/Users/alexrogozinski/visualStudioCode/OCAML/Ćwiczenia/OCAML/List5.ml";;
+  #use "/Users/alexrogozinski/visualStudioCode/OCAML/Ćwiczenia/OCAML/List5.ml";;
 
 *)
 
