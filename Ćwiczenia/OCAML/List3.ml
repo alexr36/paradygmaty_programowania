@@ -30,32 +30,32 @@ b) let f2 x y z = x (y ^ z)
 (* a) *)
 
 (* Z lukrem syntaktycznym *)
-let curry3Luk f x y z = f (x, y, z)
+let uncurry3Luk f x y z = f (x, y, z)
 
 (* Bez lukru syntaktycznego *)
-let curry3BezLuk = fun f -> fun x -> fun y -> fun z -> f (x, y, z)
+let uncurry3BezLuk = fun f -> fun x -> fun y -> fun z -> f (x, y, z)
 
 (* 
 
   Nie jest określone jaki typ muszą przyjmowac ani zwracac funkcje, a zatem:
   f: ('a * 'b * 'c) -> 'd
-  curry3Luk: ('a * 'b * 'c -> 'd) -> 'a -> 'b -> 'c -> 'd
+  uncurry3Luk: ('a * 'b * 'c -> 'd) -> 'a -> 'b -> 'c -> 'd
 
 *)
 
 (* b) *)
 
 (* Z lukrem syntaktycznym *)
-let uncurry3Luk f (x, y, z) = f x y z
+let curry3Luk f (x, y, z) = f x y z
 
 (* Bez lukru syntaktycznego *)
-let uncurry3BezLuk = fun f -> fun (x, y, z) -> f x y z  
+let curry3BezLuk = fun f -> fun (x, y, z) -> f x y z  
 
 (* 
 
   Nie jest określone jaki typ muszą przyjmowac ani zwracac funkcje, a zatem:
   f: ('a -> 'b -> 'c ->) -> 'd 
-  uncurry3Luk: ('a -> 'b -> 'c -> 'd) -> ('a * 'b * 'c) -> 'd
+  curry3Luk: ('a -> 'b -> 'c -> 'd) -> ('a * 'b * 'c) -> 'd
 
 *)
 
