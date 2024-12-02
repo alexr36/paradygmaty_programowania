@@ -1,6 +1,10 @@
 (* LISTA 2 *)
 
-(* #use "/Users/alexrogozinski/visualStudioCode/OCAML/Cw2/List2.ml";; *)
+(* 
+
+  #use "/Users/alexrogozinski/visualStudioCode/OCAML/Cw2/List2.ml";; 
+
+*)
 
 (* -- ZADANIE 2   ---------------------------------------------------------------------------------------------------------- *)
 
