@@ -27,8 +27,8 @@ let buildTraingle a b c =
 (*  --  ZADANIE 2 ----------------------------------------------------------------------- *)
 
 let calculateSum n x =
-  if (n <= 0) then 
-    raise (Failure "Nie mozna obliczyc wyrazu ciagu o indeksie mniejszym lub rownym 0.")
+  if (n <= 0) then                                                                          (* Jeśli zadane n jest <= 0: *)
+    raise (Failure "Nie mozna obliczyc wyrazu ciagu o indeksie mniejszym lub rownym 0.")    (* Rzuć wyjątek *)
   else 
     let rec aux i current_sum current_term =                                                (* Funkcja pomocnicza *)
       if (i > n) then current_sum                                                           (* Jeśli i > n, zwroc aktualną sume *)
