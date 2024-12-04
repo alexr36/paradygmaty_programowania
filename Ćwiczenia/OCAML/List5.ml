@@ -43,7 +43,7 @@ ltake 15 (lrepeat 3 (lfrom 1))
 
 (* Złożoność: O(n) *)
 
-let rec lfib =
+let lfib =
   let rec fib a b = LCons (a, lazy (fib b (a + b)))
   in fib 1 1;;
 
@@ -66,7 +66,8 @@ let rec lBreadth ltree =
     | LEmpty :: rest -> helperFunc rest                                                               (* Jesli w drzewie jest pusty wezel, to jest on pomijany *)
     | LNode (x, left, right) :: rest ->                                                               (* Jesli w drzewie jest wezel z wartoscia x, to *)
       LCons (x, lazy (helperFunc (rest @ [left (); right()])))                                        (* Tworzona jest nowa lista leniwa z glowa x i przetwarza kolejke do ktorej dodaje lewe i prawe poddrzewo tego wezla *)
-    in helperFunc [ltree];;    
+  in 
+  helperFunc [ltree];;                                                                                (* Wywołanie funkcji pomocniczej *)
 
 (* Podpunkt b): *)
 
