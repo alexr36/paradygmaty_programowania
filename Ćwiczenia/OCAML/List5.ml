@@ -2,7 +2,7 @@
 
 (* 
 
-  #use "/Users/alexrogozinski/visualStudioCode/OCAML/Ćwiczenia/OCAML/List5.ml";;
+#use "/Users/alexrogozinski/visualStudioCode/OCAML/Ćwiczenia/OCAML/List5.ml";;
 
 *)
 
@@ -22,7 +22,14 @@ let rec ltake n lxs =
 
 (*  --  ZADANIE 1 -------------------------------------------------------------------------------- *)
 
-(* Złożoność: O(n * k); n - liczba elementów w liście, k - liczba powtórzeń elementu *)
+(* 
+  Złozonosc:
+
+  Obliczeniowa: O(k * n) -  k : liczba powtorzen elemetu, n : liczba odczytanych elementow
+
+  Pamieciowa: O(n) - n : liczba odczytanych elementow listy
+
+*)
 
 let rec lrepeat k lxs =
   if (k <= 0) then failwith("Nie mozna powtorzyc elementu mniej niz jeden raz.")                      (* Jesli liczba powtorzen jest mniejsza lub rowna zero to rzuc wyjatek *)
@@ -41,7 +48,14 @@ ltake 15 (lrepeat 3 (lfrom 1))
 
 (*  --  ZADANIE 2 -------------------------------------------------------------------------------- *)
 
-(* Złożoność: O(n) *)
+(* 
+  Złozonosc:
+
+  Obliczeniowa: O(n) -  n : liczba odczytanych elementow
+
+  Pamieciowa: O(1)
+
+*)
 
 let lfib =
   let rec fib a b = LCons (a, lazy (fib b (a + b)))
@@ -57,7 +71,15 @@ type 'a lBT = LEmpty | LNode of 'a * (unit -> 'a lBT) * (unit -> 'a lBT)
 
 (* Podpunkt a): *)
 
-(* Złożoność: O(n^2) *)
+(* 
+  Złozonosc:
+
+  Obliczeniowa: O(n^2) - n : liczba węzłow
+
+  Pamieciowa: O(n) - n : liczba pobranych elementow
+
+*)
+
 
 let rec lBreadth ltree =
   let rec helperFunc queue =
@@ -66,12 +88,18 @@ let rec lBreadth ltree =
     | LEmpty :: rest -> helperFunc rest                                                               (* Jesli w drzewie jest pusty wezel, to jest on pomijany *)
     | LNode (x, left, right) :: rest ->                                                               (* Jesli w drzewie jest wezel z wartoscia x, to *)
       LCons (x, lazy (helperFunc (rest @ [left (); right()])))                                        (* Tworzona jest nowa lista leniwa z glowa x i przetwarza kolejke do ktorej dodaje lewe i prawe poddrzewo tego wezla *)
-  in 
-  helperFunc [ltree];;                                                                                (* Wywołanie funkcji pomocniczej *)
+    in helperFunc [ltree];;    
 
 (* Podpunkt b): *)
 
-(* Złożoność: O(n) *)
+(* 
+  Złozonosc:
+
+  Obliczeniowa: O(1)
+
+  Pamieciowa: O(n) - n : liczba utworzonych drzew
+
+*)
 
 let rec lTree n = LNode (n, (fun () -> lTree (2 * n)), (fun () -> lTree (2 * n + 1)));;
 
