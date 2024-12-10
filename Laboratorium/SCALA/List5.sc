@@ -62,3 +62,27 @@ val list5 = List(list1, list2, list3, list4)
 
 findMinAndMaxRec(list5)
 findMinAndMaxFunc(list5)
+
+
+//  --  ZADANIE 3 ------------------------------------------------------------------------------------------------------
+
+//  Przykładowe funkcje
+def funcF(x: Double): Double = math.pow(x, 2)                                                                           //  Wielomian: x^2
+def funcG(x: Double): Double = math.sin(x)                                                                              //  Funkcja trygonometryczna: sin(x)
+
+
+def toDerivative(func: Double => Double): Double => Double = {                                                          //  Funkcja do przekształcania funkcji w pochodną
+  val dx = 1e-7                                                                                                         //  Stała dx = 0.0000001
+
+  x => (func(x + dx) - func(x)) / dx                                                                                    //  Zwrócenie funkcji będącej przybliżeniem pochodnej zadanej funkcji
+}
+
+def unionOfFunctions(funcF: Double => Double, funcG: Double => Double): Double => Double = {                            //  Funkcja do obliczania złożenia funkcji
+  funcF compose funcG                                                                                                   //  Zwróć złożenie funkcji
+}
+
+def calculateFunction(x: Double): Double = {                                                                            //  Funkcja do obliczania wartości zadanej w zadaniu funkcji
+  unionOfFunctions(toDerivative(funcF), toDerivative(funcG))(x)                                                         //  Zwrócenie wartości
+}
+
+calculateFunction(2)
