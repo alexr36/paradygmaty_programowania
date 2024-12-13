@@ -39,7 +39,7 @@ def composeFunctionsFromListRec[A](list: List[A => A]): (A => A) = {
 
 
 def composeFunctionsFromListFunc[A](list: List[A => A]): (A => A) = {
-  list.foldLeft((x: A) => x)((result_func, current_func) => result_func compose current_func)                           //
+  list.foldLeft((x: A) => x)((result_func, current_func) => result_func compose current_func)                           //  Ta sama funkcja co powyżej ale z użyciem funkcjonału foldLeft
 }
 
 
