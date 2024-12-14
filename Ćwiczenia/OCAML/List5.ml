@@ -34,10 +34,11 @@ let rec ltake n lxs =
 let rec lrepeat k lxs =
   if (k <= 0) then failwith("Nie mozna powtorzyc elementu mniej niz jeden raz.")                      (* Jesli liczba powtorzen jest mniejsza lub rowna zero to rzuc wyjatek *)
   else                                                                                                (* W przeciwnym wypadku przejdz do wykonania reszty funkcji *)
-  let rec helperFunc counter curr_elem result =                                                       (* Deklaracja funkcji pomocniczej *)
-    if (counter = 0) then lrepeat k result                                                            (* Jesli licznik powtorzen jest rowny zero, wywolaj funkcje dla aktualnej listy wynikowej *)
-    else LCons (curr_elem, lazy (helperFunc (counter - 1) curr_elem result))                          (* W przeciwnym wypadku utworz element listy leniwej i wywolaj funkcje pomocnicza dla licznika zmniejszonego o jeden i aktualnej listy wynikowej *)
+    let rec helperFunc counter curr_elem result =                                                     (* Deklaracja funkcji pomocniczej *)
+      if (counter = 0) then lrepeat k result                                                          (* Jesli licznik powtorzen jest rowny zero, wywolaj funkcje dla aktualnej listy wynikowej *)
+      else LCons (curr_elem, lazy (helperFunc (counter - 1) curr_elem result))                        (* W przeciwnym wypadku utworz element listy leniwej i wywolaj funkcje pomocnicza dla licznika zmniejszonego o jeden i aktualnej listy wynikowej *)
   in  
+  
   match lxs with                                                                                      (* Dopasuj wzorzec zadanej listy leniwej *)
   | LNil -> LNil                                                                                      (* Jesli jest to lista pusta to zwroc liste pusta *)
   | LCons (x, lazy ltail) -> helperFunc k x ltail;;                                                   (* Jesli nie jest to lista pusta to wywolaj funkcje pomocnicza dla ogona tej listy *)
