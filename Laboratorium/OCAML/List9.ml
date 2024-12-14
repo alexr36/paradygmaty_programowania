@@ -15,8 +15,10 @@ type 'a llist =                                                                 
 let rec lfrom k =                                                                             (* Funkcja do generowania listy leniwej od zadanego elementu *)
   LCons (k , fun () -> lfrom (k + 1))
 
-let rec ltake (n, lxs) =                                                                      (* Funkcja do ekstrahowania n pierwszych elementow z zadanej listy leniwej *)
+let rec ltake (n, lxs) =                                                                      (* Funkcja do ekstrahowania n pierwszych elementow z zadanej listy leniwej *) 
   match (n, lxs) with
+  | (n, _) when (n < 0) -> 
+    raise (Failure "Nie mozna wyekstrahować ujmenej liczby elementów.")
   | (0, _) -> []
   | (_, LNil) -> []
   | (n, LCons (x, xf)) -> x :: ltake (n - 1, xf ())
