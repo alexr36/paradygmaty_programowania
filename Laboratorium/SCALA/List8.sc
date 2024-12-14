@@ -38,15 +38,15 @@ sealed trait Graph[+A]
 case class GraphNode[A](value: A, neighbors: List[GraphNode[A]]) extends Graph[A]                                       //  Definicja grafu
 
 def graphToBinaryTree[A](graph_node: GraphNode[A]): BT[A] = {
-  def aux(queue: List[GraphNode[A]]): BT[A] = {
-    queue match {
-      case Nil => Empty
-      case head :: tail =>
-        Node(head.value, graphToBinaryTree(head), aux(tail))
+  def aux(queue: List[GraphNode[A]]): BT[A] = {                                                                         //  Funkcja pomocnicza
+    queue match {                                                                                                       //  Dopasuj kolejkę wierzchołków do wzorca
+      case Nil => Empty                                                                                                 //  Jeśli jest pusta, zwróć pusty węzeł
+      case head :: tail =>                                                                                              //  Jeśli nie jest pusta,
+        Node(head.value, graphToBinaryTree(head), aux(tail))                                                            //  Dodaj do drzewa węzeł o wartości aktualnego wierzchołka z grafu
     }
   }
 
-  Node(graph_node.value, aux(graph_node.neighbors), Empty)
+  Node(graph_node.value, aux(graph_node.neighbors), Empty)                                                              //  Wywołanie funkcji pomoczniczej dla pierwszego wierzchołka
 }
 
 
