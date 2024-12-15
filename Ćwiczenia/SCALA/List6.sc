@@ -7,9 +7,9 @@ import math.Ordering
 
 @tailrec
 def whileLoop(condition: () => Boolean, expression: () => Unit): Unit = {
-  if (condition()) {
-    expression()
-    whileLoop(condition, expression)
+  if (condition()) {                                                                                                    //  Jeśli warunek jest spełniony,
+    expression()                                                                                                        //  Wykonaj kod zmieniający stan wewnętrzny programu
+    whileLoop(condition, expression)                                                                                    //  Wykonaj funkjcę (pętlę) ponownie
   }
 }
 
