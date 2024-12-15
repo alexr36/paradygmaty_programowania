@@ -29,10 +29,6 @@ def swap[A](tab: Array[A], i: Int, j: Int): Unit = {
   tab(j) = aux
 }
 
-val arr = Array(1, 2, 3)
-swap(arr, 1, 2)
-arr
-
 
 def choosePivot[A](tab: Array[A], m: Int, n: Int): A = {
   tab((m + n) / 2)
