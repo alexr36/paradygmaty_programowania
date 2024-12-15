@@ -16,9 +16,9 @@ public class Queue<T> implements MyQueue<T> {
                 queue.add(null);
             }
 
-            this.front = 0;
-            this.rear = -1;
-            this.size = 0;
+            this.front = 0;                                                                                             //  Ustaw indeks początku kolejki na 0
+            this.rear = -1;                                                                                             //  Ustaw indeks końca kolejki na -1
+            this.size = 0;                                                                                              //  Ustaw aktualny rozmiar kolejki na 0
         }
     }
 
