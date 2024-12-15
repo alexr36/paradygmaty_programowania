@@ -22,6 +22,8 @@ test()
 
 //  --  ZADANIE 2 ------------------------------------------------------------------------------------------------------
 
+//  Funkcje z wykładu przepisane na język Scala:
+
 //  a)
 def swap[A](tab: Array[A], i: Int, j: Int): Unit = {
   val aux = tab(i)
