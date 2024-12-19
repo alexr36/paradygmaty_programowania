@@ -69,6 +69,7 @@ class Rownanie(private val factors: Array[Double] = Array()):
       Array()
   }
 
+
   //  Funckja do rozwiązywania równań liniowych
   private def solveLinear(): Array[Double] = {
     val a = factors(0)
