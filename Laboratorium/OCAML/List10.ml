@@ -48,7 +48,7 @@ let findMinImper matrix =
 
 
 (* Przykładowa macierz prostokątna *)
-let example_3d_array = [|
+let example_2d_array = [|
   [|23; 42; 12; -19; 20|];
   [|1; 5; 4; 7; 7|];
   [|51; 31; -2; -2; 68|];
@@ -58,7 +58,7 @@ let example_3d_array = [|
 
 (* 
 
-  findMinFunc example_3d_array;;
-  findMinImper example_3d_array;;
+  findMinFunc example_2d_array;;
+  findMinImper example_2d_array;;
 
 *)
