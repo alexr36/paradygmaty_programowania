@@ -44,15 +44,15 @@ def findMinImper(matrix: Array[Array[Int]]): Array[Int] = {
 
 
 //  Przykładowa macierz prostokątna
-val example_3d_array = Array(
+val example_2d_array = Array(
   Array(23, 42, 12, -19, 20),
   Array(1, 5, 4, 7, 7),
   Array(51, 31, -2, -2, 68),
   Array(76, 21, 2, 2, 0)
 )
 
-findMinFunc(example_3d_array)
-findMinImper(example_3d_array)
+findMinFunc(example_2d_array)
+findMinImper(example_2d_array)
 
 //  --  ZADANIE 2 ------------------------------------------------------------------------------------------------------
 
