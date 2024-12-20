@@ -118,17 +118,17 @@ class Rownanie(private val factors: Array[Double] = Array()):
 
   //  Funkcja pomocnicza do sprawdzania poprawności wprowadzonej tablicy współczynników
   private def checkEquation(): Boolean = {
-    var factorSum = 0.0
+    var factor_sum = 0.0
 
     for (i <- 0 to factors.length - 3) {
-      factorSum += factors(i)
+      factor_sum += factors(i)
     }
 
     //  Sprawdzany warunek:
     //  Tablica współczynników dłuższa niż 3
     //  i na pozycjach od 0 do factors.length - 3
     //  są współczynniki różne od 0
-    (factorSum != 0) && (factors.length > 3)
+    (factor_sum != 0) && (factors.length > 3)
   }
 
 end Rownanie
