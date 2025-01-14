@@ -2,7 +2,7 @@
 
 //  Implementation
 def copy[T](dest: collection.mutable.Seq[T], src: collection.mutable.Seq[T]): Unit = {
-  var i: Int = 0
+  var i = 0
 
   src.foreach({
     x => dest.update(i, x)
