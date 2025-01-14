@@ -14,7 +14,7 @@ class MyQueue[+T] private (private val front: List[T], private val rear: List[T]
   }
 
 
-  def head: T = front match {
+  def first: T = front match {
     case head :: _ => head
     case Nil => throw new NoSuchElementException("The queue is empty.")
   }
