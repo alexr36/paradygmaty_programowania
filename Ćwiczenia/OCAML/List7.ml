@@ -168,6 +168,7 @@ sig
 end
 
 
+(* Implementacja kolejki *)
 module QueueCyclic : QUEUE_MUT =
 struct
   type 'a t = {
