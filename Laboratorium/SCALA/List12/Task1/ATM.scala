@@ -5,6 +5,7 @@ class ATM(private val min_balance: Int, private val refill_amount: Int) {
   private val refill_delay = 3000
   private val lock = new Object
 
+  
   def refill(): Unit = lock.synchronized {
     while (current_balance < min_balance) {
       println(s"Refilling ATM... Current balance: $current_balance.")
