@@ -2,7 +2,7 @@ package Zad_1
 
 class ATM(private val min_balance: Int, private val refill_amount: Int) {
   private var current_balance = min_balance
-  private val refill_delay = 3000
+  private val refill_delay = 3000  //  3s
   private val lock = new Object
 
   
