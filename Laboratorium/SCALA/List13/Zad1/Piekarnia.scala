@@ -27,8 +27,8 @@ class Piekarnia(private val sufficient_loafs_amount: Int) {
     current_bags_of_flour -= 1
 
     println(s"[Baker] Bread has been baked successfully." +
-      s"\nCurrent amount of loafs: $current_loafs_amount." +
-      s"\nUsed 1 bag of flour. Current amount of bags of flour: $current_bags_of_flour.")
+            s"\nCurrent amount of loafs: $current_loafs_amount." +
+            s"\nUsed 1 bag of flour. Current amount of bags of flour: $current_bags_of_flour.")
     lock.notifyAll()
   }
 
@@ -63,7 +63,7 @@ class Piekarnia(private val sufficient_loafs_amount: Int) {
     
     if (collections_counter == collections_max) {
       println(s"[Collector] Completed collecting ordered amount of times: $collections_max. " +
-        "Finishing the program...")
+              "Finishing the program...")
       System.exit(0)
     }
     
