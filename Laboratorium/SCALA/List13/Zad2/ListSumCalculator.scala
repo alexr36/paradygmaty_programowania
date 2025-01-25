@@ -2,7 +2,7 @@ package List13.Zad2
 
 class ListSumCalculator(private val threads_amount: Int, private val list: List[Int]) {
   private val segment_length = calculateSegmentLength()
-  var sum = 0
+  private var sum = 0
 
 
   def calculateSum(): Int = synchronized {
