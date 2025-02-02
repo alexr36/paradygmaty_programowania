@@ -23,6 +23,7 @@ class IntCell {
             }
             catch (InterruptedException e) {
                 e.printStackTrace();
+                return Integer.MIN_VALUE;
             }
         }
 
