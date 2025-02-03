@@ -8,7 +8,7 @@ public class Main {
     //  Constants
     private static final int PHILOSOPHERS_NUMBER = 5;
     private static final int MAX_PHILOSOPHERS_IN_DINING_ROOM = 4;
-    private static final int PROGRAM_EXECUTION_TIME_QUANTS = 10;
+    private static final int PROGRAM_EXECUTION_TIME_QUANTS = 10;    //    Tells how many times the philosophers can finish eating
 
     //  Variables
     private static Philosopher[] philosophers;
