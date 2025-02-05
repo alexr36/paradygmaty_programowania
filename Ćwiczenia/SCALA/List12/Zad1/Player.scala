@@ -28,8 +28,8 @@ class Player(private val name: String) extends Actor {
     case SetOpp(ref) => setOpponent(ref)
     case Start(maxHits) => startGame(maxHits)
     case StopGame => finishGame()
-    case Ping => handlePlayer(pong_msg)
-    case Pong => handlePlayer(ping_msg)
+    case Ping => handlePlayer(ping_msg)
+    case Pong => handlePlayer(pong_msg)
   }
 
   
@@ -46,8 +46,8 @@ class Player(private val name: String) extends Actor {
       Thread.sleep(HIT_TIME)
       hit_counter -= 1
 
-      if (msg == ping_msg) opponent ! Ping
-      else if (msg == pong_msg) opponent ! Pong
+      if (msg == ping_msg) opponent ! Pong
+      else if (msg == pong_msg) opponent ! Ping
     }
     else finishGame()
   }
@@ -56,7 +56,7 @@ class Player(private val name: String) extends Actor {
   private def startGame(maxHits: Int): Unit = {
     hit_counter = maxHits
     println(s"$name is ready to play!")
-    self ! Pong
+    self ! Ping
   }
 
 
