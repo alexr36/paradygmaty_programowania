@@ -16,6 +16,7 @@ class Pracownik(private var _nazwisko: String) {
     Pracownik.decrementEmployees()
   }
 
+  
   override def toString: String = { s"Surname: $_nazwisko, Is fired: $_zwolniony" }
 
 
