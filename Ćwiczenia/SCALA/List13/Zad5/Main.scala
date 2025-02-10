@@ -4,7 +4,7 @@ class Main
 
 
 object Main extends App {
-  //  Hamlet by William Skaespeare - Act 1, Scene 1 - Synopsis
+  //  'Hamlet' by William Skaespeare - Act 1, Scene 1 - Synopsis
   private val text =
     "Synopsis:\n\nOn the guards’ platform at Elsinore, " +
     "Horatio waits with Barnardo and Marcellus to question a ghost that has twice before appeared. " +
