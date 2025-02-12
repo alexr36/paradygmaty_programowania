@@ -31,6 +31,7 @@ class Pracownik(private var _nazwisko: String) {
 }
 
 
+
 //  Companion object
 object Pracownik {
   private var employees_number: Int = 0
