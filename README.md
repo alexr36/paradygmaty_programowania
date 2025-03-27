@@ -20,4 +20,6 @@ paradygmaty_programowania/
     ├── SCALA/      # Solutions for tasks requiring Scala
 ```
 
+In `Ćwiczenia/` directory there can be found instructions and solutions for tasks presented during practicals.
+In `Laboratoria/` directory there can be found instructions and solutions for tasks presented during laboratory classes.
 
